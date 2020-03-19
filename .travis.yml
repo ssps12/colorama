@@ -14,4 +14,4 @@ python:
   - "pypy"
 install:
   - "pip install mock"
-script: "python -m unittest discover -p *_test.py"
+script: "pytest"
