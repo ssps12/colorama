@@ -3,6 +3,8 @@ cache: pip
 arch:
   - amd64
   - arm64
+before_install:
+  - export COMPOSE_INTERACTIVE_NO_CLI=1
 python:
   - "2.7"
   - "3.8"
