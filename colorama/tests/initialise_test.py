@@ -1,7 +1,7 @@
 # Copyright Jonathan Hartley 2013. BSD 3-Clause license, see LICENSE file.
 import os
 import sys
-from unittest import TestCase, main
+from unittest import TestCase, main, skipUnless
 
 from mock import patch
 
@@ -48,7 +48,8 @@ class InitTest(TestCase):
         with osname("nt"):
             init()
             self.assertNotWrapped()
-
+            
+    @skipUnless(sys.stdout.isatty(), "sys.stdout is not a tty")
     def testInitDoesntWrapOnNonWindows(self):
         with osname("posix"):
             init()
