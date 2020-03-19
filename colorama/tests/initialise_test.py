@@ -46,12 +46,12 @@ class InitTest(TestCase):
     @patch('colorama.ansitowin32.winapi_test', lambda *_: False)
     def testInitDoesntWrapOnEmulatedWindows(self, _):
         with osname("nt"):
-            init(wrap=False)
+            init()
             self.assertNotWrapped()
 
     def testInitDoesntWrapOnNonWindows(self):
         with osname("posix"):
-            init(wrap=False)
+            init()
             self.assertNotWrapped()
 
     def testInitDoesntWrapIfNone(self):
