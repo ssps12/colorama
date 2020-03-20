@@ -1,17 +1,16 @@
 language: python
 cache: pip
-arch:
-  - amd64
-  - arm64
-before_install:
-  - export COMPOSE_INTERACTIVE_NO_CLI=1
-python:
-  - "2.7"
-  - "3.8"
-  - "3.7"
-  - "3.6"
-  - "3.5"
-  - "pypy"
+matrix:
+  include:
+    - python: 2.7
+    - python: 3.8
+    - arch: arm64
+      python: 3.7
+    - arch: amd64
+      python: 3.7
+    - python: 3.6
+    - python: 3.5
+    - python: pypy
 install:
   - "pip install mock"
-script: "pytest"
+script: "python -m unittest discover -p *_test.py"
